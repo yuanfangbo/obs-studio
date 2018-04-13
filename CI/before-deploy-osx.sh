@@ -45,7 +45,7 @@ mv ./obs-browser.so ./rundir/RelWithDebInfo/obs-plugins/
 hr "Doing the mkdir:"
 sudo mkdir OBS.app/Contents/Frameworks
 hr "Doing the copy:"
-sudo cp -r ../../cef_binary_${CEF_BUILD_VERSION}_macosx64/Release/Chromium\ Embedded\ Framework.framework OBS.app/Contents/Frameworks
+# sudo cp -r ../../cef_binary_${CEF_BUILD_VERSION}_macosx64/Release/Chromium\ Embedded\ Framework.framework OBS.app/Contents/Frameworks
 
 hr "Success?"
 
