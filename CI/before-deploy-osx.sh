@@ -14,6 +14,10 @@ export FILENAME=$FILE_DATE-$GIT_HASH-$TRAVIS_BRANCH-osx.pkg
 
 cd ./build
 
+# Move the CEF plugin out before running build_app so that it doesn't get packaged twice
+hr "Moving CEF out to preserve linking"
+mv ./rundir/RelWithDebInfo/obs-plugins/obs-browser.so ./
+
 # Move obslua
 hr "Moving OBS LUA"
 mv ./rundir/RelWithDebInfo/data/obs-scripting/obslua.so ./rundir/RelWithDebInfo/bin/
@@ -32,6 +36,10 @@ fi
 
 hr "Here we go:"
 sudo python ../CI/install/osx/build_app.py --public-key ../CI/install/osx/OBSPublicDSAKey.pem --sparkle-framework ../../sparkle/Sparkle.framework --base-url "https://obsproject.com/osx_update" --stable=$STABLE
+
+# Move the CEF plugin back to where it belongs
+hr "Moving CEF back"
+mv ./obs-browser.so ./rundir/RelWithDebInfo/obs-plugins/
 
 # Copy Chromium embedded framework to app Frameworks directory
 hr "Doing the mkdir:"
