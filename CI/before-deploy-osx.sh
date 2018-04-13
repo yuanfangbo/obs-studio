@@ -43,7 +43,7 @@ mv ./obs-browser.so ./rundir/RelWithDebInfo/obs-plugins/
 
 # Copy Chromium embedded framework to app Frameworks directory
 hr "Doing the mkdir:"
-mkdir OBS.app/Contents/Frameworks
+sudo mkdir OBS.app/Contents/Frameworks
 hr "Doing the copy:"
 sudo cp -r ../../cef_binary_${CEF_BUILD_VERSION}_macosx64/Release/Chromium\ Embedded\ Framework.framework OBS.app/Contents/Frameworks
 
